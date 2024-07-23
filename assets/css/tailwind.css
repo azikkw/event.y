@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom font-family */
+@font-face {
+    font-family: Satoshi;
+    src: url("/assets/fonts/Satoshi-Variable.ttf");
+}
+
+body {
+    @apply bg-[#f7f7f7] font-satoshi;
+}
+
+/* Scrollbars */
+body::-webkit-scrollbar {
+    @apply lg:w-1.5;
+}
+body::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+body::-webkit-scrollbar-thumb {
+    @apply lg:bg-custom-1 lg:rounded-[3px];
+}
+
+button {
+    @apply bg-custom-1 rounded-lg text-white font-medium hover:bg-custom-4 transition-all duration-200;
+}
+
+/* Inputs, buttons style */
+.form-input {
+    @apply w-full sm:w-[420px] lg:w-[310px] h-[48px] sm:h-[52px] lg:h-[42px] rounded-lg border border-[#b5b5b5] bg-transparent px-[20px] text-[16px] sm:text-lg lg:text-[15px] mb-[9px] focus:outline-none focus:border-[#2e2e2e];
+}
+.btn {
+    @apply w-full sm:w-[420px] lg:w-[310px] h-[52px] sm:h-[60px] lg:h-[48px] bg-custom-1 rounded-lg mt-3 text-white text-[19px] sm:text-[21px] lg:text-[17.5px] font-medium hover:bg-custom-4 transition-all duration-200;
+}
+
+/* Authorization pages style */
+.auth-back {
+    @apply relative w-full h-screen flex flex-col justify-center items-center;
+}
+.auth-form {
+    @apply w-full sm:w-fit mb-10 sm:mb-12 lg:mb-[55px] flex flex-col px-7 lg:px-0;
+}
+.auth-title {
+    @apply text-2xl lg:text-xl font-medium mb-1;
+}
+.welcome {
+    @apply h-[55px] lg:h-[48px] mb-8 sm:mb-10 lg:mb-8;
+}
+.error-message {
+    @apply text-[15px] sm:text-[16px] lg:text-[14.5px] font-medium text-red-500;
+}
+.link-to {
+    @apply flex gap-2 sm:text-lg lg:text-[15px];
+}
+.link-to:hover p {
+    @apply underline;
+}
+
+/* Pages style */
+.page {
+    @apply px-[15px] md:pl-[90px] md:pr-5 lg:px-[120px] py-[75px] sm:py-[80px] md:py-[100px];
+}
+.title {
+    @apply text-[26px] sm:text-[34px] font-medium sm:font-bold;
+}
+
+/* EventCard header styles */
+.event-card-header {
+    @apply w-full flex items-center gap-3.5 p-3 lg:px-8 cursor-pointer;
+}
+.calendar {
+    @apply size-[60px] bg-[#f3f3f3] rounded text-center;
+}
+.calendar p:first-child {
+    @apply text-[15px] font-medium text-custom-1 mt-1.5;
+}
+.calendar p:last-child {
+    @apply text-[25px] font-medium -mt-1.5;
+}
+.event-card-header ul {
+    @apply font-medium flex-1 overflow-hidden;
+}
+.name,
+.location,
+.date {
+    @apply overflow-hidden overflow-ellipsis whitespace-nowrap font-medium;
+}
+.location {
+    @apply text-[15px] opacity-70;
+}
+.date {
+    @apply text-[14px] opacity-70;
+}
+.more-info {
+    @apply size-5 opacity-60;
+}
+.event-card-header:hover .more-info {
+    @apply opacity-100;
+}
