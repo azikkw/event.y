@@ -1,5 +1,5 @@
 <template>
-  <div class="event-card-header bg-white rounded-lg mb-2.5 border-b border-[#ededed] lg:hover:border-[#dddddd]">
+  <NuxtLink :to="`/events/${event.id}`" class="event-card-header bg-white rounded-lg mb-2.5 border-b border-[#ededed] lg:hover:border-[#dddddd]">
     <div class="calendar">
       <p>{{event.calendar?.month}}</p>
       <p>{{event.calendar?.day}}</p>
@@ -10,7 +10,7 @@
       <li class="date">{{event?.fullDate}}</li>
     </ul>
     <Icon class="more-info" name="solar:alt-arrow-right-line-duotone"/>
-  </div>
+  </NuxtLink>
 </template>
 
 <script setup>

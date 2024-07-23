@@ -35,6 +35,17 @@ export const addToEvents = async (event: any) => {
         await setDoc(userAddedEventsRef, myEvent);
     }
 }
+// Get event by id
+export const getEvent = async (id: any) => {
+    const { $db } = useNuxtApp();
+    const user = useFirebaseUser();
+
+    if(user) {
+        // @ts-ignore
+        const docSnapshot = await getDoc(doc($db, `users/${user}/events`, id));
+        return docSnapshot.data();
+    }
+}
 // Get events
 export const getEvents = async () => {
     const { $db } = useNuxtApp();
