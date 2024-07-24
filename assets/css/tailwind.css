@@ -24,12 +24,24 @@ body::-webkit-scrollbar-thumb {
 }
 
 button {
-    @apply bg-custom-1 rounded-lg text-white font-medium hover:bg-custom-4 transition-all duration-200;
+    @apply bg-custom-1 rounded-lg text-white font-medium lg:font-normal hover:bg-custom-4 transition-all duration-200;
+}
+
+/* Back button styles */
+.back-btn {
+    @apply size-[32px] sm:size-[38px] lg:size-[30px] bg-transparent rounded-[50%] border border-[#b5b5b5] flex justify-center items-center hover:bg-transparent lg:hover:opacity-70 transition-all duration-200 text-black;
+}
+.back-btn span {
+    @apply size-[18px] sm:size-5 lg:size-[18px];
 }
 
 /* Inputs, buttons style */
-.form-input {
-    @apply w-full sm:w-[420px] lg:w-[310px] h-[48px] sm:h-[52px] lg:h-[42px] rounded-lg border border-[#b5b5b5] bg-transparent px-[20px] text-[16px] sm:text-lg lg:text-[15px] mb-[9px] focus:outline-none focus:border-[#2e2e2e];
+.form-input,
+.form-textarea {
+    @apply w-full sm:w-[420px] lg:w-[310px] h-[48px] sm:h-[52px] lg:h-[42px] rounded-lg border border-[#b5b5b5] bg-transparent px-5 text-[16px] sm:text-lg lg:text-[15px] mb-[9px] focus:outline-none focus:border-[#2e2e2e];
+}
+.form-textarea {
+    @apply h-[160px] sm:h-[220px] lg:h-[150px] py-3;
 }
 .btn {
     @apply w-full sm:w-[420px] lg:w-[310px] h-[52px] sm:h-[60px] lg:h-[48px] bg-custom-1 rounded-lg mt-3 text-white text-[19px] sm:text-[21px] lg:text-[17.5px] font-medium hover:bg-custom-4 transition-all duration-200;
@@ -65,6 +77,9 @@ button {
 .title {
     @apply text-[26px] sm:text-[34px] font-medium sm:font-bold;
 }
+.event-container {
+    @apply relative w-full bg-white rounded-[10px] p-[15px] sm:px-10 sm:py-6 mt-5 border border-[#EEEDF2];
+}
 
 /* EventCard header styles */
 .event-card-header {
@@ -98,4 +113,21 @@ button {
 }
 .event-card-header:hover .more-info {
     @apply opacity-100;
+}
+
+/* Form styles for create, edit events */
+.event-form {
+    @apply w-full sm:w-fit flex flex-col py-5;
+}
+.event-type {
+    @apply flex items-center gap-2;
+}
+.type {
+    @apply w-fit flex items-center gap-2 mb-2 px-5 sm:px-8 lg:px-5 py-1 sm:py-[7px] lg:py-1 text-[16px] sm:text-lg lg:text-[15px] font-medium border border-gray-400 rounded-[30px] cursor-pointer;
+}
+.type span {
+    @apply size-[18px] sm:size-6 lg:size-[18px];
+}
+.type.active {
+    @apply bg-custom-3 border-none text-white;
 }

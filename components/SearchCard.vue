@@ -61,7 +61,7 @@
   /* Card header styles in tailwind.css */
   /* Card body */
   .event-card-body {
-    @apply w-full p-3 lg:px-8 border-t border-[#ededed];
+    @apply w-full p-3 lg:px-8 border-t border-[#EEEDF2];
   }
   .event-card p.full {
     @apply mb-[5px];
@@ -75,7 +75,7 @@
     @apply sm:text-[15px];
   }
   .description {
-    @apply mt-2.5 opacity-85 text-[15.5px];
+    @apply font-medium mt-2.5 opacity-85 text-[15.5px];
   }
   /* Add event button */
   .add-btn {

@@ -6,7 +6,7 @@
       <Icon class="search-icon" name="solar:minimalistic-magnifer-linear"/>
       <button class="search-button" @click="search" aria-label="Search btn">Search</button>
     </div>
-    <div v-if="loading" class="loading"><Icon name="eos-icons:loading"/> Loading....</div>
+    <Loading v-if="loading" class="mt-20 sm:mt-[110px]" />
     <div v-if="foundEvents" class="result">
       <p v-if="!foundEvents._embedded" class="w-full text-start ml-5">- Nothing was found for your query.</p>
       <ul>
@@ -58,7 +58,6 @@
         const { data: searchResult } = await useFetch(`/api/search?query=${query}&page=${page.value}`);
         loading.value = false;
         foundEvents.value = searchResult.value;
-        console.log(foundEvents.value);
       }
     } catch(error) {
       console.error('Fetch error:', error);
@@ -105,14 +104,7 @@
     @apply text-[#2e2e2e];
   }
   .search-button {
-    @apply h-[38px] sm:h-[45px] lg:h-[36px] px-6 sm:px-12 lg:px-10 bg-custom-1 rounded-lg text-[16px] sm:text-lg lg:text-[15.5px] text-white font-medium hover:bg-custom-4 transition-all duration-200;
-  }
-  /* Loading styles */
-  .loading {
-    @apply flex justify-center items-center gap-2 mt-20 sm:mt-[110px] sm:text-lg lg:text-[16px];
-  }
-  .loading span {
-    @apply size-7 sm:size-8 lg:size-7;
+    @apply h-[38px] sm:h-[45px] lg:h-[36px] px-6 sm:px-12 lg:px-10 bg-custom-1 rounded-lg text-[16px] sm:text-lg lg:text-[15.5px] text-white hover:bg-custom-4 transition-all duration-200;
   }
   /* Results of search */
   .result {

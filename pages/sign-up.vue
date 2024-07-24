@@ -7,7 +7,7 @@
       <input class="form-input" v-model="formData.surname" type="text" placeholder="Enter surname...." required />
       <input class="form-input" v-model="formData.email" type="email" placeholder="Enter email...." required />
       <input class="form-input" v-model="formData.password" type="password" placeholder="Enter password...." required />
-      <p v-if="errorMessage.length > 0" class="error-message">{{errorMessage}}</p>
+      <ErrorMessage :errorMessage="errorMessage" />
       <button class="btn" type="submit" aria-label="Submit btn">Sign Up</button>
     </form>
     <NuxtLink class="link-to" to="/login">Already have an account? <p class="font-medium">Log In</p></NuxtLink>

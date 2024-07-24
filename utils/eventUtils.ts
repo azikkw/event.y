@@ -23,15 +23,15 @@ export function getEventDescription(event: any): string {
 
 // Utility function to get calendar date
 export function getCalendarMonth(dates: any): string {
-    if (dates.start?.localDate) {
+    if(dates.start?.localDate) {
         const date = new Date(dates.start.localDate);
-        return date.toLocaleString('en-US', { month: 'short' }); // Use 'en-US' for better compatibility
+        return date.toLocaleString('en-US', { month: 'short' });
     }
     return '';
 }
 // Utility function to get calendar day
 export function getCalendarDay(dates: any): string {
-    if (dates.start?.localDate) {
+    if(dates.start?.localDate) {
         const date = new Date(dates.start.localDate);
         return date.getDate().toString().padStart(2, '0');
     }
@@ -40,15 +40,21 @@ export function getCalendarDay(dates: any): string {
 
 // Utility function to get event time
 export function getEventTime(dates: any): string {
-    if (dates.start?.localTime) {
-        return ' at ' + dates.start.localTime;
+    if(dates.start?.localTime) {
+        return dates.start.localTime;
+    }
+    return '';
+}
+export function getEventDate(dates: any): string {
+    if(dates.start?.localDate) {
+        return dates.start.localDate;
     }
     return '';
 }
 // Utility function to get full date
 export function getFullDate(dates: any): string {
-    if (dates.start?.localDate) {
-        return dates.start.localDate + getEventTime(dates);
+    if(dates.start?.localDate) {
+        return getEventDate(dates) + ' at ' + getEventTime(dates);
     }
     return '';
 }

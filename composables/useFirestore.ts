@@ -1,4 +1,5 @@
-import { collection, doc, getDocs, setDoc, getDoc, deleteDoc } from "@firebase/firestore";
+import { collection, doc, getDocs, setDoc, getDoc, updateDoc, deleteDoc, query, orderBy } from "@firebase/firestore";
+import type { RouteParamValue } from "vue-router";
 
 // Get user info
 export const getUserInfo = async () => {
@@ -12,7 +13,7 @@ export const getUserInfo = async () => {
     }
 }
 
-// Add event to added events collection
+// Add event to events collection
 export const addToEvents = async (event: any) => {
     const { $db } = useNuxtApp();
     const user = useFirebaseUser();
@@ -21,12 +22,34 @@ export const addToEvents = async (event: any) => {
         id: event.id,
         title: event.name,
         description: getEventDescription(event),
-        fullDate: getFullDate(event.dates),
+        location: getEventLocation(event),
         calendar: {
             month: getCalendarMonth(event.dates),
             day: getCalendarDay(event.dates),
         },
-        location: getEventLocation(event)
+        fullDate: getFullDate(event.dates),
+        date: getEventDate(event.dates),
+        time: getEventTime(event.dates)
+    }
+
+    if(user) {
+        // @ts-ignore
+        const userAddedEventsRef = doc($db, `users/${user}/events`, event.id);
+        await setDoc(userAddedEventsRef, myEvent);
+    }
+}
+// Create event
+export const createEvent = async (event: any) => {
+    const { $db } = useNuxtApp();
+    const user = useFirebaseUser();
+
+    const myEvent = {
+        ...event,
+        calendar: {
+            month: getMonthForCreateEvent(event.date),
+            day: getDayForCreateEvent(event.date),
+        },
+        fullDate: getFullDateForCreateEvent(event.date, event.time)
     }
 
     if(user) {
@@ -53,7 +76,9 @@ export const getEvents = async () => {
 
     if(user) {
         // @ts-ignore
-        const querySnapshot = await getDocs(collection($db, `users/${user}/events`));
+        const eventsRef = collection($db, `users/${user}/events`);
+        const eventsQuery = query(eventsRef, orderBy('date', 'asc'));
+        const querySnapshot = await getDocs(eventsQuery);
         return querySnapshot.docs.map(doc => doc.data());
     }
 }
@@ -69,7 +94,7 @@ export const getEventsForSearch = async () => {
     }
 }
 // Remove from added events
-export const removeFromEvents = async (id: string) => {
+export const removeFromEvents = async (id: string | RouteParamValue[]) => {
     const { $db } = useNuxtApp();
     const user = useFirebaseUser();
 
@@ -79,3 +104,13 @@ export const removeFromEvents = async (id: string) => {
         await deleteDoc(userAddedEventsRef);
     }
 }
+// Update event function
+export const updateEvent = async (id: any, updatedData: any) => {
+    const { $db } = useNuxtApp();
+    const user = useFirebaseUser();
+
+    if(user) {
+        const eventDocRef = doc($db, `users/${user}/events`, id);
+        await updateDoc(eventDocRef, updatedData);
+    }
+};

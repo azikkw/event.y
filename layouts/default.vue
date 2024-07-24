@@ -63,7 +63,7 @@
     @apply h-[40px] flex items-center gap-1.5 bg-[#eaeaea] font-medium pl-1 pr-3 rounded-[20px] text-[14px] lg:hover:bg-[#dddddd] text-black;
   }
   .avatar {
-    @apply size-[32px] rounded-[50%] bg-custom-3 flex justify-center items-center text-white text-[13px];
+    @apply size-[32px] rounded-[50%] bg-custom-3 flex justify-center items-center text-white text-[12px];
   }
   .name {
     @apply hidden sm:block;
