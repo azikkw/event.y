@@ -20,11 +20,11 @@ const addUserToDb = (uid: string, user: any) => {
 export const logInUser = async (email: string, password: string) => {
     const { $auth } = useNuxtApp();
     return await signInWithEmailAndPassword($auth, email, password)
-        .then((cred) => localStorage.setItem('user', cred.user.uid));
+        .then((cred) => localStorage.setItem('eventy-user', cred.user.uid));
 }
 // User Log out function
 export const logOutUser = async () => {
     const { $auth } = useNuxtApp();
     return await $auth.signOut()
-        .then(() => localStorage.removeItem('user'));
+        .then(() => localStorage.removeItem('eventy-user'));
 }

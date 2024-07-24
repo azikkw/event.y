@@ -1,3 +1,3 @@
 export default function () {
-    return localStorage.getItem("user");
+    return localStorage.getItem("eventy-user");
 }
