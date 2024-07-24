@@ -60,9 +60,6 @@ button {
 .welcome {
     @apply h-[55px] lg:h-[48px] mb-8 sm:mb-10 lg:mb-8;
 }
-.error-message {
-    @apply text-[15px] sm:text-[16px] lg:text-[14.5px] font-medium text-red-500;
-}
 .link-to {
     @apply flex gap-2 sm:text-lg lg:text-[15px];
 }
