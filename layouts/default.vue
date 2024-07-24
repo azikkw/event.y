@@ -31,7 +31,7 @@
   const router = useRouter();
 
   onMounted(async () => {
-    if(!localStorage.getItem('user')) {
+    if(!localStorage.getItem('eventy-user')) {
       await router.replace('/login');
     }
     userInfo.value = await getUserInfo();
