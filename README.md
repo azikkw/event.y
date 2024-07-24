@@ -12,7 +12,7 @@
 
 ## 🌐 BASE URL
 You can access `Moviesta` by this link:
-> https://eventy.onrender.com
+> https://event-y.onrender.com
 
 ---
 
